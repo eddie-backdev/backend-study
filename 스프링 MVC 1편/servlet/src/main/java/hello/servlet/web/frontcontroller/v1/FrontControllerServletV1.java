@@ -3,11 +3,12 @@ package hello.servlet.web.frontcontroller.v1;
 import hello.servlet.web.frontcontroller.v1.controller.MemberFormControllerV1;
 import hello.servlet.web.frontcontroller.v1.controller.MemberListControllerV1;
 import hello.servlet.web.frontcontroller.v1.controller.MemberSaveControllerV1;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +28,6 @@ public class FrontControllerServletV1 extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("FrontControllerServletV1.service");
 
-        //front-controller/v1/members/주소, 입력된 주소 값을 얻을 수 있다.
         String requestURI = request.getRequestURI();
 
         ControllerV1 controller = controllerMap.get(requestURI);

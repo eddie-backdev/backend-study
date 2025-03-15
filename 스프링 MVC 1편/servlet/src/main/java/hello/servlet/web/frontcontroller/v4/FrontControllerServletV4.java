@@ -4,11 +4,12 @@ import hello.servlet.web.frontcontroller.MyView;
 import hello.servlet.web.frontcontroller.v4.controller.MemberFormControllerV4;
 import hello.servlet.web.frontcontroller.v4.controller.MemberListControllerV4;
 import hello.servlet.web.frontcontroller.v4.controller.MemberSaveControllerV4;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,9 +27,7 @@ public class FrontControllerServletV4 extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("FrontControllerServletV3.service");
 
-        //front-controller/v4/members/주소, 입력된 주소 값을 얻을 수 있다.
         String requestURI = request.getRequestURI();
 
         ControllerV4 controller = controllerMap.get(requestURI);
@@ -37,14 +36,12 @@ public class FrontControllerServletV4 extends HttpServlet {
             return;
         }
 
-        //paramMap
         Map<String, String> paramMap = createParamMap(request);
         Map<String, Object> model = new HashMap<>(); //추가
 
         String viewName = controller.process(paramMap, model);
 
         MyView view = viewResolver(viewName);
-
         view.render(model, request, response);
     }
 
